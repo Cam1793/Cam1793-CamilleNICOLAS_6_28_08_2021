@@ -19,7 +19,7 @@ router.post('/signup', auth, saucesCtrl.createSauce);
 router.get('/:id', auth, saucesCtrl.getOneSauce);
 router.put('/:id', auth, multer, saucesCtrl.modifySauce);
 router.delete('/:id', auth, multer, saucesCtrl.deleteSauce);
-router.post('/like', auth, saucesCtrl.getAllSauces)
+router.post('/like', auth, saucesCtrl.likeSauce)
 
 
 //Exporter les routes
