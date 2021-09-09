@@ -5,50 +5,6 @@ const fs = require('fs');
 
 //CRUD Create Read Uptade Delete
 
-
-//Like ou Dislike une sauce
-exports.likeSauce = (req, res, next) => {
-  const like = req.body.like;
-  const userId = req.body.userId;
-
-  Sauce.updateOne({ _id : req.params.id})
-  .then (sauce => {
-    //Si like est = 1, le user aime
-  if (like === 1) {
-      //on ajoute 1 dans la base de données mongoDB
-      {$inc: {likes : 1}};
-      //on ajoute like + 1
-      sauce.likes += 1;
-      //on ajoute le userId dans la base de données mongoDB
-      {$push: {userLiked : userId }}
-      //Si like est = -1, le user n'aime pas
-  }else if (like === -1) {
-      //on enlève 1 dans la base de données mongoDB
-      {$inc: {likes : -1}};
-      //on enlève like  1
-      sauce.dislikes -= 1;
-      //on ajoute le userId dans la base de données mongoDB
-      {$push: {userLiked : userId }}
-      //Si like est = 0, le user annule son like
-  }else if (like === 0) {
-      //retire son like
-      sauce.likes -= 1;
-      //retire son dislike
-      sauce.dislikes -= 1;
-  }
-  //Sauvegarde la sauce modifié dans la base de données mongoDB
-  sauce.save()
-    //retour promise status OK
-    .then(() => res.status(201).json({ message: 'Sauce liked !'}))
-    //retour erreur requète
-    .catch(error => res.status(400).json({ error }));
-
-  })
-  //retour erreur communication avec le serveur
-  .catch(error => res.status(500).json({ error }));
-
-};
-
 //Création d'un produit
 exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce);

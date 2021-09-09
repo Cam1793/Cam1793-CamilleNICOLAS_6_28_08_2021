@@ -2,7 +2,7 @@
 const express = require('express');
 //Mettre express et le lier avec la fonction router dans une constante
 const router = express.Router();
-//Importer /controlers/stuff.js dans une constante
+//Importer /controlers/sauces.js dans une constante
 const saucesCtrl = require('../controllers/sauces');
 //Importer /middleware/auth.j dans une constante
 const auth = require('../middleware/auth');
@@ -19,8 +19,6 @@ router.post('/signup', auth, saucesCtrl.createSauce);
 router.get('/:id', auth, saucesCtrl.getOneSauce);
 router.put('/:id', auth, multer, saucesCtrl.modifySauce);
 router.delete('/:id', auth, multer, saucesCtrl.deleteSauce);
-router.post('/like', auth, saucesCtrl.likeSauce)
-
 
 //Exporter les routes
 module.exports = router;
