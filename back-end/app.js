@@ -17,12 +17,13 @@ const config =  require('./config.js');
 console.log(config.DATA_BASE_NAME)
 console.log(config.DB_PASSWORD)
 
-mongoose.connect('mongodb+srv://cam1711:Mimpewdsmarkh2o@cluster0.axw5u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${config.DB_USERNAME}:${config.DB_PASSWORD}@cluster0.axw5u.mongodb.net/${config.DATA_BASE_NAME}?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
-
+  .catch(() => {  
+    console.log('Connexion à MongoDB échouée !')}
+    );
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
