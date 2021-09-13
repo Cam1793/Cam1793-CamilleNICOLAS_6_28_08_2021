@@ -2,22 +2,19 @@
 
 ## Installation ##
 
-Here are the dependancies you need to install:
-- NodeJS 12.14 or 14.0.
+Voici les dépendances que vous devez installé pour lancer la partie front-end de l'application:
+- NodeJS 12.14 ou 14.0.
 - Angular CLI 7.0.2.
-- node-sass : make sure to use the corresponding version to NodeJS. For Noe 14.0 for instance, you need node-sass in version 4.14+.
-
-On Windows, these installations require to use PowerShell in administrator mode.
-
-The, clone this repo and run `npm install`.
-
+- node-sass : soyez sûr d'utiliser la version correspondante à NodeJS.
 
 ## Usage ##
 
-Run `npm start`. This should both run the local server and launch your browser.
+Lancer `npm start`. Cela devrait lancer le serveur local et l'afficher sur votre navigateur.
 
-If your browser fails to launch, or shows a 404 error, navigate your browser to http://localhost:8080.
+Si votre navigateur n'arrive pas à afficher le front-end ou montre une page d'erreur 404, utiliser http://localhost:8080.
 
 The app should reload automatically when you make a change to a file.
 
-Use `Ctrl+C` in the terminal to stop the local server.
+L'application doit se relancer automatiquement quand vous faites une modification dans un fichier.
+
+Utiliser `Ctrl+C` dans votre terminal pour arrêter le serveur local.
