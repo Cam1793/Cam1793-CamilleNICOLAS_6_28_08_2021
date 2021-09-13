@@ -1,4 +1,4 @@
-# HOT TAKES #
+# HOT TAKES FRONT-END#
 
 ## Installation ##
 
