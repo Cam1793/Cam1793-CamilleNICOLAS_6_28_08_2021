@@ -12,13 +12,18 @@ const likeRoute = require('./routes/like')
 const mongoose = require('mongoose');
 //importation de path permettant d'accéder au path du serveur
 const path = require('path');
+//importation du fichier de config
+const config =  require('./config.js');
+
 
 //fonction pour lié la base de données mongoDB avec le serveur
-mongoose.connect('mongodb+srv://cam1711:Mimpewdsmarkh2o@test.axw5u.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${config.DB_USERNAME}:${config.DB_PASSWORD}@cluster0.rldpw.mongodb.net/${config.DATA_BASE_NAME}?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
+  .catch(() => {  
+    console.log('Connexion à MongoDB échouée !')}
+    );
 
   //CORS
   app.use((req, res, next) => {
