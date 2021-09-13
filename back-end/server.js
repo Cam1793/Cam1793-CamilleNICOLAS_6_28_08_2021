@@ -1,6 +1,9 @@
 const http = require('http');
 const app = require('./app');
+//importation du fichier de config
+const config =  require('./config.js');
 
+console.log(`NODE_ENV=${config.NODE_ENV}`);
 const normalizePort = val => {
   const port = parseInt(val, 10);
 
@@ -12,7 +15,7 @@ const normalizePort = val => {
   }
   return false;
 };
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(config.PORT);
 app.set('port', port);
 
 const errorHandler = error => {

@@ -11,7 +11,7 @@ const multer = require ('../middleware/multer-config')
 
 //Routes contenant les fonctions/middleware de express. Récupération de toutes les sauces et l'implentation du CRUD
 //auth = application du middleware de l'authentification du token sur toutes les routes de l'application
-// multer = importer et sauvegarder des fichiers externes /!\ Bien le mettre après auth car il faut auth la requète avant
+//multer = importer et sauvegarder des fichiers externes /!\ Bien le mettre après auth car il faut auth la requète avant
 router.get('/', auth, saucesCtrl.getAllSauces);
 router.post('/', auth, multer, saucesCtrl.createSauce);
 router.post('/login', auth, saucesCtrl.createSauce);

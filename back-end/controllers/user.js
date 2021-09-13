@@ -1,9 +1,12 @@
+  
 //Importation du package jsonwebtoken
 const User = require ('../models/user');
 //Importation de la fonction bcrypt pour création du hash
 const bcrypt = require ('bcrypt');
 //Importation du package jsonwebtoken pour la création du token
 const jwt = require('jsonwebtoken');
+//Importation du fichier de config
+const config =  require('../config.js');
 
 //Création d'un nouveau compte utilisateur
 exports.signup = (req, res, next) => {
@@ -51,7 +54,7 @@ exports.login = (req, res, next) => {
             //token est défini par jwt
             token: jwt.sign(
             { userId: user._id },
-            'RANDOM_TOKEN_SECRET',
+            `${config.JWT_TOKEN_SECRET}`,
             { expiresIn: '24h' }
             )
         });

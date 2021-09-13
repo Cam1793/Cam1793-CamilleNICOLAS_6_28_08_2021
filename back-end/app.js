@@ -1,24 +1,30 @@
-//importation de express
+//Importation de express
 const express = require('express');
-//Mettre express dans une variable
+//Iettre express dans une variable
 const app = express();
-//importation de bodyParser
+//Importation de bodyParser
 const bodyParser = require('body-parser');
-//importation des routes
+//Importation des routes
 const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 const likeRoute = require('./routes/like')
-//importation de mongooser
+//Importation de mongooser
 const mongoose = require('mongoose');
-//importation de path permettant d'accéder au path du serveur
+//Importation de path permettant d'accéder au path du serveur
 const path = require('path');
+//importation du fichier de config
+const config =  require('./config.js');
+console.log(config.DATA_BASE_NAME)
+console.log(config.DB_PASSWORD)
 
 //fonction pour lié la base de données mongoDB avec le serveur
-mongoose.connect('mongodb+srv://cam1711:Mimpewdsmarkh2o@test.axw5u.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${config.DB_USERNAME}:${config.DB_PASSWORD}@camille-cluster.rldpw.mongodb.net/${config.DATA_BASE_NAME}?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
+  .catch(() => {  
+    console.log('Connexion à MongoDB échouée !')}
+    );
 
   //CORS
   app.use((req, res, next) => {
