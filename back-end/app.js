@@ -17,7 +17,7 @@ const config =  require('./config.js');
 console.log(config.DATA_BASE_NAME)
 console.log(config.DB_PASSWORD)
 
-mongoose.connect('mongodb+srv://cam1711:Mimpewdsmarkh2o@cluster0.axw5u.mongodb.net/cluster0?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://cam1711:Mimpewdsmarkh2o@cluster0.axw5u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
