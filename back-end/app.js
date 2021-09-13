@@ -16,6 +16,7 @@ const path = require('path');
 const config =  require('./config.js');
 console.log(config.DATA_BASE_NAME)
 console.log(config.DB_PASSWORD)
+console.log(config.HOST)
 
 //fonction pour lié la base de données mongoDB avec le serveur
 mongoose.connect(`mongodb+srv://${config.DB_USERNAME}:${config.DB_PASSWORD}@camille-cluster.rldpw.mongodb.net/${config.DATA_BASE_NAME}?retryWrites=true&w=majority`,
