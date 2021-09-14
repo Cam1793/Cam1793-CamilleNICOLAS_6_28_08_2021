@@ -1,23 +1,24 @@
-//importation de express
+//Importation de express
 const express = require('express');
-//Mettre express dans une variable
+
+//Express dans une variable
 const app = express();
-//importation de bodyParser
-const bodyParser = require('body-parser');
-//importation des routes
+
+//Importation des routes
 const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 const likeRoute = require('./routes/like')
-//importation de mongooser
+
+//Importation de mongooser
 const mongoose = require('mongoose');
-//importation de path permettant d'accéder au path du serveur
+
+//Importation de path permettant d'accéder au path du serveur
 const path = require('path');
-//importation du fichier de config
+
+//Importation du fichier de config
 const config =  require('./config.js');
 
-
-//fonction pour lié la base de données mongoDB avec le serveur
-mongoose.connect(`mongodb+srv://${config.DB_USERNAME}:${config.DB_PASSWORD}@cluster0.rldpw.mongodb.net/${config.DATA_BASE_NAME}?retryWrites=true&w=majority`,
+mongoose.connect(`mongodb+srv://${config.DB_USERNAME}:${config.DB_PASSWORD}@camille-cluster.axw5u.mongodb.net/${config.DATA_BASE_NAME}?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -25,7 +26,7 @@ mongoose.connect(`mongodb+srv://${config.DB_USERNAME}:${config.DB_PASSWORD}@clus
     console.log('Connexion à MongoDB échouée !')}
     );
 
-  //CORS
+  //CORS (Cross-Origin Resource Sharing)
   app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -33,16 +34,17 @@ mongoose.connect(`mongodb+srv://${config.DB_USERNAME}:${config.DB_PASSWORD}@clus
     next();
 });
 
-app.use(bodyParser.json());
+//Application de la version bodyParse de express
+app.use(express.json());
 
-//activation des Routes avec les liens url
+//Application des Routes avec les liens url
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', likeRoute);
 
-//indique qu'à chaque requète, il faut gérer la ressource provenant du dossier images 
+//Indique qu'à chaque requète, il faut gérer la ressource provenant du dossier images 
 //de manière static => un sous repertoire de base _dirname vers la route images
 app.use('/images', express.static(path.join(__dirname, 'images')));
-//activation de express
+//Exportation de express
 module.exports = app;

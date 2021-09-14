@@ -11,7 +11,7 @@ exports.handleLikeOption = (req, res, next) => {
     .then (sauce => {
       //Si like est = 1, le user aime
     if (like === 1) {
-        // on vérifie si l'utilisateur
+        // on vérifie si l'utilisateur a déjà liker la sauce
         let likeUser = checkUser(sauce.usersLiked, userId);
         // Premier like de l'utilisateur
         if(!likeUser) {
@@ -24,12 +24,12 @@ exports.handleLikeOption = (req, res, next) => {
             throw new Error("On ne peut liker une sauce qu'une seule fois");
         }
     }else if (like === -1) {
-        // on vérifie si l'utilisateur
+        // on vérifie si l'utilisateur a déjà disliker la sauce
         let dislikeUser = checkUser(sauce.usersDisliked, userId);
         // Premier dislike de l'utilisateur
         if(!dislikeUser) {
             //let dislikes = sauce.dislikes ? sauce.dislikes : 0;
-            sauce.dislikes += 1;;
+            sauce.dislikes += 1;
             sauce.usersDisliked.push(userId); 
         } else {
             // l'utilisateur a déjà likeé
@@ -68,11 +68,11 @@ exports.handleLikeOption = (req, res, next) => {
     .catch(error => res.status(403).json({ error: error.message}));
 };  
 
+//Fonction pour créer un nouvel array d'un nouvel utilisateurId
 function createNewUserIdArray (userIdArray, userId) {
     return userIdArray.filter(id => id !== userId);
 }
-// ON vérifie si l'utilisateur a déjà liké ou disliké une sauce
+//Fonction pour vérifier l'utilisateur existe déjà
 function checkUser(userIdArray, userId) {
     return userIdArray.find(id => id ===userId);
-
 } 
