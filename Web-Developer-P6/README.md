@@ -13,8 +13,6 @@ Lancer `npm start`. Cela devrait lancer le serveur local et l'afficher sur votre
 
 Si votre navigateur n'arrive pas à afficher le front-end ou montre une page d'erreur 404, utiliser http://localhost:8080.
 
-The app should reload automatically when you make a change to a file.
-
 L'application doit se relancer automatiquement quand vous faites une modification dans un fichier.
 
 Utiliser `Ctrl+C` dans votre terminal pour arrêter le serveur local.

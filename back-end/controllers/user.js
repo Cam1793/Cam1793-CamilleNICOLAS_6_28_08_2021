@@ -1,4 +1,3 @@
-  
 //Importation du package jsonwebtoken
 const User = require ('../models/user');
 //Importation de la fonction bcrypt pour création du hash
